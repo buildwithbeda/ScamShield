@@ -1,0 +1,383 @@
+{
+  "admin": {
+    "username": "admin",
+    "displayName": "ScamShield Security Operations",
+    "salt": "794dec14b93e298a885a848fd9b7d6e7",
+    "passwordHash": "a6cdd12b6192e347f6d317c640025b00bdc0f821ec85003593edbadcef4cad2f3bf7f168ea9e4a430f517afd6059a5d1e6798357974be0ff2936d452b602d917",
+    "role": "superadmin",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "lastLogin": "2026-11-21T07:45:12.578Z"
+  },
+  "rules": [
+    {
+      "id": "rule-pan-kyc",
+      "name": "PAN & Bank KYC Harvesting",
+      "category": "Banking & Financial",
+      "regex": "(?:pan\\s+kyc|incomplete\\s+pan(?:\\s+kyc)?|update\\s+pan|pan\\s+card\\s+update)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Solicits urgent PAN or KYC submission over message.",
+      "simpleReason": "Asks for PAN card or KYC via text message, which banks never do.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-acc-suspension",
+      "name": "Account & Card Suspension Threat",
+      "category": "Banking & Financial",
+      "regex": "(?:yono\\s+account(?:\\s+will\\s+be)?\\s+suspended|account\\s+(?:will\\s+be\\s+)?suspended|account\\s+(?:is\\s+)?blocked|card\\s+blocked)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Threatens immediate account or card suspension to induce panic.",
+      "simpleReason": "Threatens account or card blocking to force hasty compliance.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-secret-credentials",
+      "name": "Secret OTP & PIN Solicitation",
+      "category": "Phishing & Credentials",
+      "regex": "(?:enter\\s+otp|share\\s+otp|send\\s+otp|provide\\s+mpin|enter\\s+mpin|cvv\\s+number|atm\\s+pin|banking\\s+password)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Directly solicits one-time passwords, MPIN, CVV, or passwords.",
+      "simpleReason": "Asks for secret OTP or banking PIN passwords.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-courier-delivery",
+      "name": "India Post / Courier Delivery Failure",
+      "category": "Delivery & Courier",
+      "regex": "(?:parcel\\s+[a-z0-9]+\\s+could\\s+not\\s+be\\s+delivered|package\\s+returns|delivery\\s+failed|incomplete\\s+address|package\\s+held|redelivery\\s+fee)",
+      "severity": "critical",
+      "score": 30,
+      "description": "Bait claiming an undeliverable package requiring address update.",
+      "simpleReason": "Fake delivery notification urging you to update address via link.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-utility-disconnection",
+      "name": "Electricity / Utility Cutoff Extortion",
+      "category": "Urgency & Intimidation",
+      "regex": "(?:electricity\\s+power\\s+will\\s+be\\s+disconnected|power\\s+will\\s+be\\s+disconnected|bill\\s+was\\s+not\\s+updated|electricity\\s+bill\\s+unpaid)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Threatens same-day power disconnection to force instant payment or phone calls.",
+      "simpleReason": "Threatens power disconnection unless you call or pay immediately.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-digital-arrest",
+      "name": "Digital Arrest / Legal Coercion",
+      "category": "Urgency & Intimidation",
+      "regex": "(?:legal\\s+action|police\\s+complaint|court\\s+summons|arrest\\s+warrant|cbi\\s+notice|digital\\s+arrest)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Fabricates law enforcement or judicial warrants to coerce payment.",
+      "simpleReason": "Threatens police arrest or court summons to terrify victims.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-remote-tools",
+      "name": "Remote Access Tool Abuse",
+      "category": "Digital & Technology",
+      "regex": "(?:install\\s+(?:anydesk|teamviewer|quicksupport|rustdesk)|download\\s+apk|install\\s+banking\\s+app\\s+from\\s+link)",
+      "severity": "critical",
+      "score": 35,
+      "description": "Directs victim to download screen-sharing tools or rogue APKs.",
+      "simpleReason": "Asks to download remote-control apps that grant phone takeover.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "rule-strict-deadline",
+      "name": "Artificial Rush Deadline",
+      "category": "Urgency & Intimidation",
+      "regex": "(?:within\\s+\\d+\\s*(?:hours?|hrs?|mins?|minutes?)|tonight\\s+at\\s+\\d+|before\\s+midnight)",
+      "severity": "warning",
+      "score": 20,
+      "description": "Imposes short countdown deadline to bypass critical thinking.",
+      "simpleReason": "Uses strict time deadlines to panic the recipient.",
+      "enabled": true,
+      "isCustom": false,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ],
+  "advisories": [
+    {
+      "id": "adv-01",
+      "title": "Widespread Distribution of Fraudulent APK Files Mimicking PM Welfare Schemes",
+      "country": "India",
+      "region": "South Asia",
+      "category": "Government Impersonation / Malware",
+      "publishingOrg": "CERT-In (Indian Computer Emergency Response Team)",
+      "publishDate": "2024-03-12",
+      "freshnessLabel": "Official Technical Advisory",
+      "summary": "Attackers are distributing malicious Android APK packages via WhatsApp claiming to register citizens for Pradhan Mantri financial welfare schemes. Once installed, the APK requests SMS read permissions to siphon OTPs.",
+      "sourceUrl": "https://www.cert-in.org.in",
+      "status": "ACTIVE",
+      "priority": "CRITICAL",
+      "verified": true
+    },
+    {
+      "id": "adv-02",
+      "title": "Surge in \"Digital Arrest\" Cyber Extortion Calls Impersonating Law Enforcement",
+      "country": "India",
+      "region": "South Asia",
+      "category": "Identity & Impersonation",
+      "publishingOrg": "I4C (Ministry of Home Affairs)",
+      "publishDate": "2024-04-05",
+      "freshnessLabel": "Official Government Advisory",
+      "summary": "The Indian Cyber Crime Coordination Centre issued an urgent citizen warning regarding syndicates posing as CBI, Customs, and State Police officers on video calls, placing citizens under fake \"Digital Arrest\" and extorting funds.",
+      "sourceUrl": "https://cybercrime.gov.in",
+      "status": "ACTIVE",
+      "priority": "CRITICAL",
+      "verified": true
+    },
+    {
+      "id": "adv-03",
+      "title": "Advisory on Fraudulent Mobile Applications and Screen-Sharing App Abuse",
+      "country": "India",
+      "region": "South Asia",
+      "category": "Banking & Financial",
+      "publishingOrg": "Reserve Bank of India (RBI)",
+      "publishDate": "2024-02-18",
+      "freshnessLabel": "Banking Ombudsman Publication",
+      "summary": "RBI reiterated safety warnings against installing remote-access screen sharing apps (AnyDesk, TeamViewer) at the behest of callers posing as bank or utility executives.",
+      "sourceUrl": "https://www.rbi.org.in",
+      "status": "ACTIVE",
+      "priority": "HIGH",
+      "verified": true
+    },
+    {
+      "id": "adv-04",
+      "title": "Transnational Operation \"First Light\" Dismantles Southeast Asian Boiler Rooms",
+      "country": "International",
+      "region": "Global",
+      "category": "Investment Fraud",
+      "publishingOrg": "INTERPOL",
+      "publishDate": "2024-06-20",
+      "freshnessLabel": "International Law Enforcement Report",
+      "summary": "INTERPOL coordination across 61 countries intercepted $257 Million in illicit funds and froze 6,745 bank accounts connected to industrial-scale investment and romance scam compounds.",
+      "sourceUrl": "https://www.interpol.int",
+      "status": "ACTIVE",
+      "priority": "HIGH",
+      "verified": true
+    }
+  ],
+  "intelligenceSources": [
+    {
+      "id": "i4c",
+      "name": "Indian Cyber Crime Coordination Centre (I4C)",
+      "acronym": "I4C",
+      "country": "India",
+      "agency": "Ministry of Home Affairs, Government of India",
+      "focus": "National cybercrime reporting, 1930 helpline operations, inter-bank fraud freezing",
+      "coverage": "All 36 Indian States and Union Territories",
+      "url": "https://cybercrime.gov.in",
+      "frequency": "Periodic Parliamentary & Ministry releases",
+      "syncStatus": "OFFICIAL_GOV_PARTNER",
+      "lastChecked": "2026-11-21T07:16:18.811Z",
+      "enabled": true
+    },
+    {
+      "id": "cert-in",
+      "name": "CERT-In (Indian Computer Emergency Response Team)",
+      "acronym": "CERT-In",
+      "country": "India",
+      "agency": "Ministry of Electronics and Information Technology (MeitY)",
+      "focus": "Cybersecurity incident response, technical vulnerability advisories",
+      "coverage": "National cyber infrastructure and digital citizens",
+      "url": "https://www.cert-in.org.in",
+      "frequency": "Weekly technical advisories",
+      "syncStatus": "LIVE_ADVISORY_MONITOR",
+      "lastChecked": "2026-11-21T07:16:18.812Z",
+      "enabled": true
+    },
+    {
+      "id": "rbi",
+      "name": "Reserve Bank of India (RBI)",
+      "acronym": "RBI",
+      "country": "India",
+      "agency": "Central Bank of India",
+      "focus": "Banking frauds, unauthorized electronic transactions, consumer awareness",
+      "coverage": "Scheduled Commercial Banks, Payment System Operators (UPI/PPI)",
+      "url": "https://www.rbi.org.in",
+      "frequency": "Annual Report & Periodic Consumer Alerts",
+      "syncStatus": "OFFICIAL_REGULATORY_FEED",
+      "lastChecked": "2026-11-21T07:16:18.812Z",
+      "enabled": true
+    },
+    {
+      "id": "interpol",
+      "name": "INTERPOL Financial Crime and Anti-Corruption Centre (IFCACC)",
+      "acronym": "INTERPOL",
+      "country": "International",
+      "agency": "International Criminal Police Organization",
+      "focus": "Transnational fraud syndicates, illicit fund tracking (I-GRIP), boiler rooms",
+      "coverage": "196 Member Countries",
+      "url": "https://www.interpol.int",
+      "frequency": "Operational releases & Global threat assessments",
+      "syncStatus": "LAW_ENFORCEMENT_NETWORK",
+      "lastChecked": "2026-11-21T07:16:18.812Z",
+      "enabled": true
+    },
+    {
+      "id": "ftc",
+      "name": "Federal Trade Commission (FTC)",
+      "acronym": "FTC",
+      "country": "United States",
+      "agency": "Independent US Government Consumer Protection Agency",
+      "focus": "Consumer Sentinel Network, impersonation frauds, consumer restitution",
+      "coverage": "United States & cross-border consumer fraud complaints",
+      "url": "https://www.ftc.gov",
+      "frequency": "Quarterly & Annual Data Books",
+      "syncStatus": "PUBLIC_DATA_CONNECTOR",
+      "lastChecked": "2026-11-21T07:16:18.812Z",
+      "enabled": true
+    },
+    {
+      "id": "scamwatch",
+      "name": "Scamwatch (ACCC)",
+      "acronym": "ACCC",
+      "country": "Australia",
+      "agency": "National Anti-Scam Centre (NASC)",
+      "focus": "National scam reporting, disruption of scam websites, investment fraud",
+      "coverage": "Australia nationwide",
+      "url": "https://www.scamwatch.gov.au",
+      "frequency": "Monthly reports & Annual Targeting Scams report",
+      "syncStatus": "PUBLIC_DATA_CONNECTOR",
+      "lastChecked": "2026-11-21T07:16:18.812Z",
+      "enabled": true
+    }
+  ],
+  "feedback": [
+    {
+      "id": "fb-1795246885993-fnz5",
+      "messageText": "http://give-away.xyz",
+      "senderType": "WhatsApp",
+      "claimedSender": "Indiapost",
+      "suspectedCategory": "Lottery / Prize",
+      "reporterEmail": "bedasarmah7@gmail.com",
+      "status": "REVIEWED_CONFIRMED_SCAM",
+      "submittedAt": "2026-11-21T07:41:25.993Z",
+      "adminNotes": ""
+    },
+    {
+      "id": "fb-001",
+      "messageText": "Dear customer, your electricity will be disconnected tonight at 9:30 PM. Call electricity officer 9876543210 immediately.",
+      "senderType": "SMS",
+      "claimedSender": "Electricity Dept",
+      "suspectedCategory": "Utility Disconnection",
+      "reporterEmail": "citizen.alert@example.org",
+      "status": "REVIEWED_CONFIRMED_SCAM",
+      "submittedAt": "2026-02-14T09:12:00.000Z",
+      "adminNotes": "Classic utility extortion scheme with fake officer mobile trap."
+    },
+    {
+      "id": "fb-002",
+      "messageText": "Your parcel IN849201 failed delivery due to incomplete address. Update at https://indpost-track.xyz within 12h.",
+      "senderType": "WhatsApp",
+      "claimedSender": "India Post",
+      "suspectedCategory": "Delivery & Courier",
+      "reporterEmail": "delivery.tracker@example.com",
+      "status": "PENDING_REVIEW",
+      "submittedAt": "2026-02-18T14:45:00.000Z",
+      "adminNotes": "Automated ingestion flagged suspicious .xyz domain."
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-1795247160542-dnz7b5",
+      "timestamp": "2026-11-21T07:46:00.543Z",
+      "actor": "admin",
+      "action": "FEEDBACK_STATUS_UPDATED",
+      "target": "fb-1795246885993-fnz5",
+      "details": "Marked feedback status as \"REVIEWED_CONFIRMED_SCAM\"",
+      "ip": "::1"
+    },
+    {
+      "id": "log-1795247112579-ovme0b",
+      "timestamp": "2026-11-21T07:45:12.579Z",
+      "actor": "admin",
+      "action": "LOGIN_SUCCESS",
+      "target": "AUTH_SYSTEM",
+      "details": "Administrator authenticated successfully.",
+      "ip": "::1"
+    },
+    {
+      "id": "log-1795247102933-1fxn8i",
+      "timestamp": "2026-11-21T07:45:02.933Z",
+      "actor": "ADMIN",
+      "action": "LOGOUT",
+      "target": "AUTH_SYSTEM",
+      "details": "Administrator logged out.",
+      "ip": "::1"
+    },
+    {
+      "id": "log-1795246885995-z29ijw",
+      "timestamp": "2026-11-21T07:41:25.995Z",
+      "actor": "PUBLIC_CITIZEN",
+      "action": "COMMUNITY_REPORT_SUBMITTED",
+      "target": "fb-1795246885993-fnz5",
+      "details": "Community scam submission received (WhatsApp: Indiapost)",
+      "ip": "::1"
+    },
+    {
+      "id": "log-1795246673852-ru8ki6",
+      "timestamp": "2026-11-21T07:37:53.852Z",
+      "actor": "admin",
+      "action": "LOGIN_SUCCESS",
+      "target": "AUTH_SYSTEM",
+      "details": "Administrator authenticated successfully.",
+      "ip": "::1"
+    },
+    {
+      "id": "log-1795245936338-ob8s5v",
+      "timestamp": "2026-11-21T07:25:36.338Z",
+      "actor": "TEST_RUNNER",
+      "action": "UNIT_TEST_ACTION",
+      "target": "TEST_TARGET",
+      "details": "Testing audit log creation",
+      "ip": "127.0.0.1"
+    },
+    {
+      "id": "log-1795245867775-hga8nr",
+      "timestamp": "2026-11-21T07:24:27.775Z",
+      "actor": "TEST_RUNNER",
+      "action": "UNIT_TEST_ACTION",
+      "target": "TEST_TARGET",
+      "details": "Testing audit log creation",
+      "ip": "127.0.0.1"
+    },
+    {
+      "id": "log-1795245406901-5v60g9",
+      "timestamp": "2026-11-21T07:16:46.901Z",
+      "actor": "TEST_RUNNER",
+      "action": "UNIT_TEST_ACTION",
+      "target": "TEST_TARGET",
+      "details": "Testing audit log creation",
+      "ip": "127.0.0.1"
+    },
+    {
+      "id": "log-bootstrap",
+      "timestamp": "2026-11-21T07:16:18.812Z",
+      "actor": "SYSTEM",
+      "action": "SYSTEM_INITIALIZED",
+      "target": "DATABASE_BOOTSTRAP",
+      "ip": "127.0.0.1",
+      "details": "ScamShield secure database initialized with pre-validated threat detection rules and intelligence providers."
+    }
+  ]
+}
